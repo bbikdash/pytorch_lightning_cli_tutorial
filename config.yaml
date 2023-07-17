@@ -1,0 +1,40 @@
+model:
+  class_path: Model1
+  init_args:
+    out_dim: 5
+    learning_rate: &duplicate_data 0.063
+
+data:
+  class_path: __main__.FakeDataset2
+
+trainer:
+  accelerator: gpu
+  max_epochs: 500
+  devices: -1
+  logger:
+    class_path: TensorBoardLogger
+  enable_checkpointing: True
+  callbacks:
+    - class_path: LearningRateMonitor
+      init_args:
+        logging_interval: epoch
+    - class_path: ModelCheckpoint
+      init_args:
+        save_top_k: 3
+        monitor: val_loss
+        mode: min
+        every_n_epochs: 1
+    - class_path: pytorch_lightning.callbacks.progress.TQDMProgressBar
+      init_args:
+        refresh_rate: 20
+
+optimizer:
+  class_path: SGD
+  init_args:
+    lr: *duplicate_data
+
+# lr_scheduler:
+#   class_path: torch.optim.lr_scheduler.StepLR
+#   init_args:
+#     step_size: 5
+#     gamma: 0.1
