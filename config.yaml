@@ -24,7 +24,7 @@ trainer:
         monitor: val_loss
         mode: min
         every_n_epochs: 1
-    - class_path: lightning.callbacks.progress.TQDMProgressBar
+    - class_path: lightning.pytorch.callbacks.TQDMProgressBar
       init_args:
         refresh_rate: 20
 
