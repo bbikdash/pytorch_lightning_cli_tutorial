@@ -1,17 +1,12 @@
-import pytorch_lightning as pl
-from pytorch_lightning import Trainer
-from pytorch_lightning.cli import LightningCLI
-from pytorch_lightning.callbacks.progress import TQDMProgressBar
-from pytorch_lightning.callbacks import Callback, ModelCheckpoint, LearningRateMonitor
-from pytorch_lightning.cli import LightningCLI
+from lightning.pytorch.data import LightningDataModule
 
-class MyDataModule(pl.LightningDataModule):
+class MyDataModule(LightningDataModule):
     """
     DataModule used for semantic segmentation in geometric generalization project
     """
 
     def __init__(self, input_size, batch_size, data_info):
-        super(PowerLineDataModule).__init__()
+        super(MyDataModule).__init__()
         self.input_size = args.input_size
         self.batch_size = args.batch_size
         self.data_info = data_info
@@ -48,10 +43,10 @@ class MyDataModule(pl.LightningDataModule):
     # define your dataloaders
     # again, here defined for train, validate and test, not for predict as the project is not there yet. 
     def train_dataloader(self):
-        return DataLoader(self.train, batch_size=self.batch_size, shuffle=True, num_workers=os.cpu_count()-4)
+        return DataLoader(self.train, batch_size=self.batch_size, shuffle=True, num_workers=4)
 
     def val_dataloader(self):
-        return DataLoader(self.validate, batch_size=self.batch_size, num_workers=os.cpu_count()-4)
+        return DataLoader(self.validate, batch_size=self.batch_size, num_workers=4)
 
     def test_dataloader(self):
-        return DataLoader(self.test, batch_size=1, shuffle=False, num_workers=os.cpu_count()-4)
+        return DataLoader(self.test, batch_size=1, shuffle=False, num_workers=4)

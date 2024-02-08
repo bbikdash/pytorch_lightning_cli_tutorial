@@ -1,9 +1,6 @@
 
 
-import pytorch_lightning as pl
-from pytorch_lightning.cli import LightningCLI
-from pytorch_lightning.demos.boring_classes import DemoModel
-
+from lightning.pytorch.demos.boring_classes import DemoModel
 
 class Model1(DemoModel):
 
@@ -11,9 +8,7 @@ class Model1(DemoModel):
         """
         learning_rate : learning rate in check
         """
-
         super()
-
         pass
 
     def configure_optimizers(self):
