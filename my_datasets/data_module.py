@@ -1,4 +1,5 @@
 from lightning.pytorch.data import LightningDataModule
+from torch.utils.data import DataLoader, random_split
 
 class MyDataModule(LightningDataModule):
     """
@@ -7,8 +8,8 @@ class MyDataModule(LightningDataModule):
 
     def __init__(self, input_size, batch_size, data_info):
         super(MyDataModule).__init__()
-        self.input_size = args.input_size
-        self.batch_size = args.batch_size
+        self.input_size = input_size
+        self.batch_size = batch_size
         self.data_info = data_info
 
         
