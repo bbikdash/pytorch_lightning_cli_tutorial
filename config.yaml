@@ -9,10 +9,12 @@ data:
 
 trainer:
   accelerator: gpu
-  max_epochs: 500
-  devices: -1
+  max_epochs: 50
+  devices: 2
   logger:
     class_path: TensorBoardLogger
+    init_args:
+      save_dir: ./
   enable_checkpointing: True
   callbacks:
     - class_path: LearningRateMonitor
