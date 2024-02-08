@@ -1,14 +1,10 @@
 import os
 import sys
-# sys.path.insert(1, "/home/bbikdash/Development/10_bassam_devel_utils/")
 import torch
 import numpy as np
-import lightning.pytorch as pl
 from lightning.pytorch import Trainer
-from lightning.pytorch.cli import LightningCLI
 from lightning.pytorch.callbacks.progress import TQDMProgressBar
 from lightning.pytorch.callbacks import Callback, ModelCheckpoint, LearningRateMonitor
-from lightning.pytorch.cli import LightningCLI
 
 # main.py
 from lightning.pytorch.cli import LightningCLI

@@ -1,4 +1,4 @@
-from lightning.pytorch.data import LightningDataModule
+from lightning import LightningDataModule
 from torch.utils.data import DataLoader, random_split
 
 class MyDataModule(LightningDataModule):
