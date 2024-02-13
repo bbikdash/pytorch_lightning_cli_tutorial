@@ -2,7 +2,7 @@ model:
   class_path: Model1
   init_args:
     out_dim: 5
-    learning_rate: &duplicate_data 0.063
+    learning_rate: &duplicate_data 0.003
 
 data:
   class_path: __main__.FakeDataset2
@@ -10,7 +10,7 @@ data:
 trainer:
   accelerator: gpu
   max_epochs: 50
-  devices: 2
+  devices: [1]
   logger:
     class_path: TensorBoardLogger
     init_args:
